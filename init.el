@@ -26,6 +26,11 @@
 (use-package vterm
   :ensure t)
 
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 (use-package catppuccin-theme
   :ensure t
   :config
@@ -103,7 +108,8 @@
 (use-package eglot
   :config
   :hook ((go-ts-mode python-ts-mode) . eglot-ensure)
-  :bind (("C-x q" . eglot-code-actions)))
+  :bind (("C-x q" . eglot-code-actions)
+	 ("C-x r" . eglot-rename)))
 
 (use-package emacs
   :custom
@@ -133,7 +139,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(all-the-icons catppuccin-theme company copilot-chat dashboard
+		   exec-path-from-shell flycheck go-mode
+		   helm-projectile helm-rg magit nerd-icons
+		   page-break-lines rainbow-delimiters telephone-line
+		   tree-sitter-langs treesit-auto vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
